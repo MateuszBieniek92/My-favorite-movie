@@ -24,10 +24,6 @@ $(document).ready(function () {
 
     function DisplayVisits() {
 
-        // one year cookie
-        today.setTime(today.getTime() + 365 * 24 * 60 * 60 * 1000);
-        $.cookie('visits', numVisits, today);
-
         var visitCounter = $('.visit__counter');
         var favoriteName = $('.favorite__name');
         var today = new Date();
@@ -46,6 +42,10 @@ $(document).ready(function () {
             favoriteName.append('Szeregowiec Ryan');
             console.log(numVisits);
         }
+
+        // cookie
+        today.setTime(today.getTime() + 365 * 24 * 60 * 60 * 1000);
+        $.cookie('visits', numVisits, today);
     }
 
     DisplayVisits();
