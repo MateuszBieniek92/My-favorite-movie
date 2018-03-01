@@ -35,7 +35,7 @@ $(document).ready(function () {
             numVisits = 1;
         }
 
-        if (numVisits >= 10) {
+        if (numVisits > 10) {
             favoriteName.append('AC/DC - Thunderstruck');
             console.log(numVisits);
         } else {
