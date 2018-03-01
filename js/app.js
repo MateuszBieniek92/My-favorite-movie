@@ -24,27 +24,28 @@ $(document).ready(function () {
 
     function DisplayVisits() {
 
-        var numVisits = $.cookie('visits');
+        // one year cookie
+        today.setTime(today.getTime() + 365 * 24 * 60 * 60 * 1000);
+        $.cookie('visits', numVisits, today);
+
         var visitCounter = $('.visit__counter');
         var favoriteName = $('.favorite__name');
+        var today = new Date();
+        var numVisits = $.cookie('visits');
 
         if (numVisits) {
             numVisits = parseInt(numVisits) + 1;
         } else {
             numVisits = 1;
-        } 
-
-        if (numVisits == 1) {
-            visitCounter.append('Jestes tu po raz pierwszy! :)');
-        } else {
-            visitCounter.append('Jestes tu '+ numVisits + 'raz!');
         }
 
-        var today = new Date();
-
-        // today.setTime(today.getTime() + 365 * 24 * 60  * 60  * 1000); // one year cookie
-        today.setTime(today.getTime() + 50); //test
-        $.cookie('visits', numVisits, today);
+        if (numVisits == 10) {
+            favoriteName.append('AC/DC - Thunderstruck');
+            console.log(numVisits);
+        } else {
+            favoriteName.append('Szeregowiec Ryan');
+            console.log(numVisits);
+        }
     }
 
     DisplayVisits();
